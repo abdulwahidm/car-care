@@ -59,6 +59,10 @@ class CarServiceResource extends Resource
         return $table
             ->columns([
                 //
+                Tables\Columns\TextColumn::make('name')
+                ->searchable(),
+                Tables\Columns\TextColumn::make('price'),
+                Tables\Columns\ImageColumn::make('icon'),
             ])
             ->filters([
                 //

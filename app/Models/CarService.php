@@ -18,6 +18,7 @@ class CarService extends Model
         'slug',
         'about',
         'photo',
+        'icon',
         'duration_in_hour',
     ];
 

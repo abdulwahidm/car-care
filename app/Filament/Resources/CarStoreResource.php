@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\CarStoreResource\Pages;
 use App\Filament\Resources\CarStoreResource\RelationManagers;
+use App\Filament\Resources\CarStoreResource\RelationManagers\PhotosRelationManager;
 use App\Models\CarStore;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -108,6 +109,15 @@ class CarStoreResource extends Resource
             ])
             ->filters([
                 //
+                Tables\Filters\SelectFilter::make('city_id')
+                    ->label('Filter by City')
+                    ->relationship('city', 'name')
+                    ->searchable(),
+
+                Tables\Filters\SelectFilter::make('car_service_id')
+                    ->label('Filter by Service')
+                    ->relationship('storeServices.service', 'name')
+                    ->searchable(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -123,6 +133,7 @@ class CarStoreResource extends Resource
     {
         return [
             //
+            PhotosRelationManager::class,
         ];
     }
 

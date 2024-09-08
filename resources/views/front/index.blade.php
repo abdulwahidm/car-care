@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8">  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="{{ asset('output.css') }}" rel="stylesheet">
   <link href="{{ asset('main.css') }}" rel="stylesheet">
@@ -33,72 +33,31 @@
       <section id="Services" class="flex flex-col gap-3 px-4">
         <h1 class="font-semibold text-white">Our Great Services</h1>
         <div class="grid grid-cols-3 gap-4">
-          <a href="store-list.html" class="card-services">
+
+          @forelse ( $services as $service )
+
+          <a href="#" class="card-services">
             <div class="rounded-[20px] border border-[#E9E8ED] py-4 flex flex-col items-center text-center gap-4 bg-white transition-all duration-300 hover:ring-2 hover:ring-[#FF8E62]">
               <div class="w-[50px] h-[50px] flex shrink-0">
-                <img src="{{asset('assets//images/icons/illustration.svg')}}" alt="icon">
+                <img src="{{Storage::url($service->icon)}}" alt="icon">
               </div>
               <div class="flex flex-col">
-                <p class="font-semibold text-sm leading-[21px]">Gold Wash</p>
-                <p class="text-xs leading-[18px] text-[#909DBF]">173 Stores</p>
+                <p class="font-semibold text-sm leading-[21px]">
+                  {{$service->name}}
+                </p>
+                <p class="text-xs leading-[18px] text-[#909DBF]">
+                  0 Stores  
+                </p>
               </div>
             </div>
           </a>
-          <a href="store-list.html" class="card-services">
-            <div class="rounded-[20px] border border-[#E9E8ED] py-4 flex flex-col items-center text-center gap-4 bg-white transition-all duration-300 hover:ring-2 hover:ring-[#FF8E62]">
-              <div class="w-[50px] h-[50px] flex shrink-0">
-                <img src="{{asset('assets//images/icons/illustration1.svg')}}" alt="icon">
-              </div>
-              <div class="flex flex-col">
-                <p class="font-semibold text-sm leading-[21px]">Fix Paints</p>
-                <p class="text-xs leading-[18px] text-[#909DBF]">173 Stores</p>
-              </div>
-            </div>
-          </a>
-          <a href="store-list.html" class="card-services">
-            <div class="rounded-[20px] border border-[#E9E8ED] py-4 flex flex-col items-center text-center gap-4 bg-white transition-all duration-300 hover:ring-2 hover:ring-[#FF8E62]">
-              <div class="w-[50px] h-[50px] flex shrink-0">
-                <img src="{{asset('assets//images/icons/illustration2.svg')}}" alt="icon">
-              </div>
-              <div class="flex flex-col">
-                <p class="font-semibold text-sm leading-[21px]">Interiors</p>
-                <p class="text-xs leading-[18px] text-[#909DBF]">173 Stores</p>
-              </div>
-            </div>
-          </a>
-          <a href="store-list.html" class="card-services">
-            <div class="rounded-[20px] border border-[#E9E8ED] py-4 flex flex-col items-center text-center gap-4 bg-white transition-all duration-300 hover:ring-2 hover:ring-[#FF8E62]">
-              <div class="w-[50px] h-[50px] flex shrink-0">
-                <img src="{{asset('assets//images/icons/illustration3.svg')}}" alt="icon">
-              </div>
-              <div class="flex flex-col">
-                <p class="font-semibold text-sm leading-[21px]">Exteriors</p>
-                <p class="text-xs leading-[18px] text-[#909DBF]">173 Stores</p>
-              </div>
-            </div>
-          </a>
-          <a href="store-list.html" class="card-services">
-            <div class="rounded-[20px] border border-[#E9E8ED] py-4 flex flex-col items-center text-center gap-4 bg-white transition-all duration-300 hover:ring-2 hover:ring-[#FF8E62]">
-              <div class="w-[50px] h-[50px] flex shrink-0">
-                <img src="{{asset('assets//images/icons/illustration4.svg')}}" alt="icon">
-              </div>
-              <div class="flex flex-col">
-                <p class="font-semibold text-sm leading-[21px]">3D Coating</p>
-                <p class="text-xs leading-[18px] text-[#909DBF]">173 Stores</p>
-              </div>
-            </div>
-          </a>
-          <a href="store-list.html" class="card-services">
-            <div class="rounded-[20px] border border-[#E9E8ED] py-4 flex flex-col items-center text-center gap-4 bg-white transition-all duration-300 hover:ring-2 hover:ring-[#FF8E62]">
-              <div class="w-[50px] h-[50px] flex shrink-0">
-                <img src="{{asset('assets//images/icons/illustration5.svg')}}" alt="icon">
-              </div>
-              <div class="flex flex-col">
-                <p class="font-semibold text-sm leading-[21px]">Kaca Film</p>
-                <p class="text-xs leading-[18px] text-[#909DBF]">173 Stores</p>
-              </div>
-            </div>
-          </a>
+            
+          @empty  
+            <p>Belum ada service tersedia...</p>            
+          @endforelse
+          
+          
+
         </div>
       </section>
     </form>

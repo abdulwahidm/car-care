@@ -101,7 +101,7 @@
             <div class="flex flex-col gap-[14px] w-full">
               <div class="reviews-card flex gap-3 pb-4 border-b border-[#E9E8ED] w-full last-of-type:border-b-0">
                 <div class="w-[50px] h-[50px] flex shrink-0">
-                  <img src="{{asset('assets/images/photos/photo1.png')}}')}}" class="w-full h-full object-cover" alt="photo">
+                  <img src="{{asset('assets/images/photos/photo1.png')}}" class="w-full h-full object-cover" alt="photo">
                 </div>
                 <div class="flex flex-col gap-1 w-full">
                   <div class="flex items-center justify-between">
@@ -129,7 +129,7 @@
               </div>
               <div class="reviews-card flex gap-3 pb-4 border-b border-[#E9E8ED] w-full last-of-type:border-b-0">
                 <div class="w-[50px] h-[50px] flex shrink-0">
-                  <img src="{{asset('assets/images/photos/photo2.png')}}')" class="w-full h-full object-cover" alt="photo">
+                  <img src="{{asset('assets/images/photos/photo2.png')}}" class="w-full h-full object-cover" alt="photo">
                 </div>
                 <div class="flex flex-col gap-1 w-full">
                   <div class="flex items-center justify-between">

@@ -39,4 +39,9 @@ class FrontController extends Controller
             'cityName' => $city ? $city->name : 'Unknown City',
         ]);
     }
+
+    public function details(CarStore $carStore) {
+        return view('front.details', compact('carStore'));
+    }
+
 }               

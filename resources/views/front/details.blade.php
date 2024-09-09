@@ -85,10 +85,12 @@
                 <div class="rounded-2xl border border-[#E9E8ED] flex items-center justify-between p-4 bg-white">
                   <div class="flex items-center gap-[10px]">
                     <div class="w-[60px] h-[60px] flex shrink-0">
-                      <img src="{{asset('assets/images/icons/illustration.svg')}}" alt="icon">
+                      <img src="{{Storage::url($carService->icon)}}" alt="icon">
                     </div>
                     <div class="flex flex-col h-fit">
-                      <p class="font-semibold">Gold Wash</p>
+                      <p class="font-semibold">
+                        {{$carService->name}}
+                      </p>
                       <p class="text-sm leading-[21px] text-[#909DBF]">Top Rated Service</p>
                     </div>
                   </div>
@@ -249,18 +251,22 @@
           <!-- Modal content -->
           <div class="bg-white max-w-[320px] mx-auto flex flex-col h-fit rounded-[20px] pb-4 gap-4 overflow-hidden">
             <div class="w-full h-[150px] flex shrink-0">
-              <img src="{{asset('assets/images/thumbnails/th-modal.png')}}" class="w-full h-full object-cover" alt="thumbnail">
+              <img src="{{Storage::url($carService->photo)}}" class="w-full h-full object-cover" alt="thumbnail">
             </div>
             <div class="flex flex-col px-4 gap-4">
               <div class="flex items-center justify-between">
                 <div class="flex flex-col gap-[2px]">
-                  <p class="font-semibold text-lg leading-[27px]">Gold Wash</p>
+                  <p class="font-semibold text-lg leading-[27px]">
+                    {{$carService->name}}
+                  </p>
                   <p class="text-sm leading-[21px] text-[#909DBF]">Top Rated Service</p>
                 </div>
                 <p class="rounded-full p-[6px_10px] bg-[#DFB3E6] w-fit font-bold text-xs leading-[18px]">POPULAR</p>
               </div>
               <hr class="border-[#E9E8ED]">
-              <p class="leading-[28px]">Menggunakan metode golden touch maka pencucian mobil akan lebih cepat, bersih, dan tidak mudah kotor kembali.</p>
+              <p class="leading-[28px]">
+                {{$carService->about}}
+              </p>
               <button class="rounded-full border border-[#E9E8ED] p-[12px_16px] bg-white w-full font-semibold" data-modal-hide="default-modal">Close Details</button>
             </div>
           </div>

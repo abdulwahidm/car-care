@@ -23,7 +23,7 @@
           <div class="w-6 h-6 flex shrink-0 mr-[6px]">
             <img src="{{asset('assets//images/icons/location-normal.svg')}}" alt="icon">
           </div>
-          <select name="location" id="Location" class=" bg-white font-semibold w-full outline-none">
+          <select name="city_id" id="city_id" class=" bg-white font-semibold w-full outline-none">
             @foreach ($cities as $city )
               <option value="{{$city->id}}" selected>{{$city->name}}</option>
             @endforeach
@@ -36,7 +36,7 @@
 
           @forelse ( $services as $service )
 
-          <a href="#" class="card-services">
+          <a href="#" class="service-link card-services">
             <div class="rounded-[20px] border border-[#E9E8ED] py-4 flex flex-col items-center text-center gap-4 bg-white transition-all duration-300 hover:ring-2 hover:ring-[#FF8E62]">
               <div class="w-[50px] h-[50px] flex shrink-0">
                 <img src="{{Storage::url($service->icon)}}" alt="icon">
@@ -106,5 +106,17 @@
       </ul>
     </nav>
   </main>
+  <script>
+       document.querySelectorAll('.service-link').forEach(function(link) {
+           link.addEventListener('click', function(e) {
+             e.preventDefault();
+             const cityId = document.getElementById('city_id').value;
+             const serviceTypeId = this.getAttribute('data-service');
+    
+             // Redirect to a route with url parameter
+             window.location.href = `/search?city_id=${cityId}&service_type=${serviceTypeId}`;
+           });
+       });
+     </script>
 </body>
 </html>

@@ -12,7 +12,7 @@ class FrontController extends Controller
     //
     public function index() {
         $cities = City::all();
-        $services = CarService::all();
+        $services = CarService::withCount(['storeServices'])->get();
         return view('front.index', compact('cities', 'services'));
     }
 }               

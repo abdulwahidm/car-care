@@ -46,7 +46,7 @@
                   {{$service->name}}
                 </p>
                 <p class="text-xs leading-[18px] text-[#909DBF]">
-                  0 Stores  
+                  {{ $service->storeServices->count() }}  Stores
                 </p>
               </div>
             </div>

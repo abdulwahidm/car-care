@@ -31,4 +31,4 @@ Route::get('/booking/{carStore}/{carService}/payment', [FrontController::class, 
 ->name('front.booking.payment');
 
 Route::get('/booking/success/{bookingTransaction}', [FrontController::class, 'success_booking'])
-->name('front.success,booking');
+->name('front.success.booking');

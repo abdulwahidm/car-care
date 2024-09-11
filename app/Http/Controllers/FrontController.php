@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreBookingPaymentRequest;
 use App\Http\Requests\StoreBookingRequest;
+use App\Models\BookingTransaction;
 use App\Models\CarService;
-use App\Models\CarStore;
+use App\Models\CarStore;    
 use App\Models\City;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class FrontController extends Controller
 {
     //
@@ -86,5 +89,48 @@ class FrontController extends Controller
         session()->put('totalAmount', $carService->price);
         return view('front.payment', compact('carService', 'carStore', 'totalPpn' , 'bookingFee' , 'totalGrandTotal'));
     }
+
+    public function booking_payment_store(StoreBookingPaymentRequest $request) {
+        $customerName = session()->get('customerName');
+        $customerPhoneNumber = session()->get('customerPhoneNumber');
+        $totalAmount = session()->get('totalAmount');
+        $customerTimeAt = session()->get('customerTimeAt');
+        $serviceTypeId = session()->get('serviceTypeId');
+        $carStoreId = session()->get('carStoreId');
+    
+        $bookingTransactionId = null;
+        
+        // Closure Based Database Transaction
+        DB::transaction(function() use ($request, $totalAmount, $customerName, $customerPhoneNumber, $customerTimeAt, $serviceTypeId, $carStoreId, &$bookingTransactionId) {
+
+            $validated = $request->validated();
+    
+            if ($request->hasFile('proof')) {
+                $proofPath = $request->file('proof')->store('proofs', 'public');
+                $validated['proof'] = $proofPath;
+            }
+    
+            $validated['name'] = $customerName;
+            $validated['total_amount'] = $totalAmount;
+            $validated['phone_number'] = $customerPhoneNumber;
+            $validated['started_at'] = Carbon::tomorrow()->format('Y-m-d');
+            $validated['time_at'] = $customerTimeAt;
+            $validated['car_service_id'] = $serviceTypeId;
+            $validated['car_store_id'] = $carStoreId;
+            $validated['is_paid'] = false;
+            $validated['trx_id'] = BookingTransaction::generateUniqueTrxId();
+    
+            $newBooking = BookingTransaction::create($validated);
+
+            $bookingTransactionId = $newBooking->id;
+        });
+    
+        return redirect()->route('front.success.booking', $bookingTransactionId);
+    }
+
+    public function success_booking(BookingTransaction $bookingTransaction)
+    {
+        return view('front.succes_booking', compact('bookingTransaction'));
+    }   
 
 }               

@@ -76,8 +76,15 @@ class FrontController extends Controller
 
     public function booking_payment(CarStore $carStore, CarService $carService)
      {
+        $ppn = 0.11;
+        $totalPpn = $carService->price * $ppn;
+        $bookingFee = 25000;
+        $totalGrandTotal = $totalPpn + $bookingFee + $carService->price;
+
+        // dd (number_format($totalGrandTotal, 0, ',' , '.'));
+
         session()->put('totalAmount', $carService->price);
-        return view('front.payment', compact('carService', 'carStore'));
+        return view('front.payment', compact('carService', 'carStore', 'totalPpn' , 'bookingFee' , 'totalGrandTotal'));
     }
 
 }               

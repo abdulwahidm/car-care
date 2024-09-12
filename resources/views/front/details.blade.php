@@ -79,7 +79,7 @@
         <div class="tabs-contents">
           <div id="about-tab" class="tabcontent flex hidden">
             <div class="flex flex-col gap-5">
-              <p class="leading-[28px]">Shayna Xtra Wash selalu memberikan pelayanan extra terbaik untuk kendaraan anda sehingga terlihat lebih sukses.</p>
+              <p class="leading-[28px]">{{$carService->about}}</p>
               <div id="Service" class="flex flex-col gap-2">
                 <h2 class="font-semibold">Your Service</h2>
                 <div class="rounded-2xl border border-[#E9E8ED] flex items-center justify-between p-4 bg-white">

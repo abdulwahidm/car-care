@@ -154,8 +154,9 @@ class FrontController extends Controller
             ->first();
 
         if (!$details) {
-            return redirect()->back()->withErrors(['error' => 'Transactions not found.']);
+            return redirect()->back()->with('error', 'Booking tidak ditemukan. Harap masukan Booking ID dan Nomor Handphone yang valid!');
         }
+            
 
         $ppn = 0.11;
         $totalPpn = $details->service_details->price * $ppn;

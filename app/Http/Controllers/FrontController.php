@@ -161,8 +161,9 @@ class FrontController extends Controller
         $ppn = 0.11;
         $totalPpn = $details->service_details->price * $ppn;
         $bookingFee = 25000;
+        $totalGrandTotal = $details->service_details->price + $totalPpn + $bookingFee;
 
-        return view('front.transactions_details', compact('details', 'totalPpn', 'bookingFee'));
+        return view('front.transactions_details', compact('details', 'totalPpn', 'bookingFee', 'totalGrandTotal'));
     }
 
 }               

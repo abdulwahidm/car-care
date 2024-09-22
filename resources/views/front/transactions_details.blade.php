@@ -115,7 +115,7 @@
           </div>
           <div class="flex items-center justify-between">
             <p class="text-sm leading-[21px]">Grand Total</p>
-            <p class="font-bold text-xl leading-[30px] text-[#FF8E62]">{{number_format($details->total_amount, 0, ',' , '.')}}</p>
+            <p class="font-bold text-xl leading-[30px] text-[#FF8E62]">{{number_format($totalGrandTotal, 0, ',' , '.')}}</p>
           </div>
         </div>
       </div>
